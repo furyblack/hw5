@@ -18,7 +18,7 @@ export class QueryBlogRepository {
 
 // get by ID для конкретного поста
 
-    static async getAllPostsForBlog(blogId: string,sortData: blogSortData): Promise<PaginationOutputType<PostOutputType>> {
+    static async getAllPostsForBlog(blogId: string,sortData: blogSortData): Promise<PaginationOutputType<PostOutputType[]>> {
         const {pageSize, pageNumber, sortBy, sortDirection, searchNameTerm} = sortData
         const search = {blogId: blogId}
         const blog = await postCollection
@@ -44,7 +44,7 @@ export class QueryBlogRepository {
     }
 
 
-    static async getAll(sortData: blogSortData): Promise<PaginationOutputType<BlogOutputType>> {
+    static async getAll(sortData: blogSortData): Promise<PaginationOutputType<BlogOutputType[]>> {
         const {pageSize, pageNumber, sortBy, sortDirection, searchNameTerm} = sortData
         const search = searchNameTerm
             ? {name: {$regex: searchNameTerm, $options: 'i'}}

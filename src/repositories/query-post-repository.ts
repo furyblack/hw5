@@ -8,7 +8,7 @@ import {SortDirection} from "mongodb";
 
 export class QueryPostRepository {
 
-    static async getAll(sortData: postSortData):Promise<PaginationOutputType<PostOutputType>> {
+    static async getAll(sortData: postSortData):Promise<PaginationOutputType<PostOutputType[]>> {
         const {pageSize, pageNumber, sortBy, sortDirection, searchNameTerm} = sortData
         const search = searchNameTerm
             ? {title: {$regex: searchNameTerm, $options: 'i'}}

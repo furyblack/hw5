@@ -16,7 +16,7 @@ import {CreateNewPostForBlogType} from "../types/posts/input";
 
 export const blogRoute = Router({});
 //test commit
-blogRoute.get('/', async (req: RequestWithQuery<blogQuerySortData>, res: Response<PaginationOutputType<BlogOutputType>>) => {
+blogRoute.get('/', async (req: RequestWithQuery<blogQuerySortData>, res: Response<PaginationOutputType<BlogOutputType[]>>) => {
     const paginationData = paginator(req.query)
 
     const blogsPromise = await QueryBlogRepository.getAll(paginationData)

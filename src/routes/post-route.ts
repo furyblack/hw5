@@ -12,7 +12,7 @@ import {PaginationOutputType} from "../types/blogs/output";
 
 export const postRoute = Router({})
 
-postRoute.get('/', async (req: RequestWithQuery<postQuerySortData>, res: Response<PaginationOutputType<PostOutputType>> ) =>{
+postRoute.get('/', async (req: RequestWithQuery<postQuerySortData>, res: Response<PaginationOutputType<PostOutputType[]>> ) =>{
     const paginationData = paginator(req.query)
     const posts=  await QueryPostRepository.getAll(paginationData)
     res.send(posts)
