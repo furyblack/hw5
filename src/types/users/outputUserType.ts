@@ -4,8 +4,25 @@ export type UserViewType = {
     "id": string,
     "login": string,
     "email": string,
+    "createdAt": Date
+}
+
+export type UserOutputType = {
+    "id": string,
+    "login": string,
+    "email": string,
     "createdAt": string
 }
+
+export type UserMongoDbType =  {
+
+    "name": string,
+    "description": string,
+    "websiteUrl": string,
+    "createdAt": Date
+}
+
+
 
 
 export type userSortData = {
@@ -13,7 +30,8 @@ export type userSortData = {
     pageNumber: number,
     sortBy: string,
     sortDirection: string,
-    searchNameTerm: string | null,
+    searchLoginTerm: string | null,
+    searchEmailTerm: string | null
 }
 
 

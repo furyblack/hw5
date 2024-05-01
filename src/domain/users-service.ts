@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
-import { UserViewType} from "../types/users/outputUserType";
+import {UserOutputType, UserViewType} from "../types/users/outputUserType";
 import {UsersRepository} from "../repositories/users-repository";
 import {UserMongoDbType} from "../types/users/inputUsersType";
 
 export const usersService = {
-    async createUser(login: string, email:string, password:string): Promise<UserViewType>{
+    async createUser(login: string, email:string, password:string): Promise<UserOutputType>{
         const passwordSalt = await bcrypt.genSalt(10)
         const passwordHash = await this._generateHash(password, passwordSalt)
 

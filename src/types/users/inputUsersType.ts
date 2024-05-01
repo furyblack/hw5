@@ -12,3 +12,11 @@ export type UserMongoDbType =  {
     createdAt: Date
 }
 
+export type userQuerySortData = {
+    pageSize?: number,
+    pageNumber?: number,
+    sortBy?: string,
+    sortDirection?: string,
+    searchLoginTerm?: string,
+    searchEmailTerm?: string,
+}
