@@ -19,7 +19,7 @@ usersRouter.get('/',  async (req: RequestWithQuery<userQuerySortData>, res: Resp
 })
 
 
-usersRouter.post('/', authMiddleware, userValidation, async (req: RequestWithBody<CreateNewUserType>, res: Response)=> {
+usersRouter.post('/', authMiddleware, userValidation(), async (req: RequestWithBody<CreateNewUserType>, res: Response)=> {
     const newCreatedUser: UserOutputType = await UsersService.createUser(req.body.login, req.body.email, req.body.password)
     res.status(201).send(newCreatedUser)
 })

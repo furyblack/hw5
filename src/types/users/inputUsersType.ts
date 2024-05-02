@@ -4,6 +4,12 @@ export type CreateNewUserType= {
     "email": string
 }
 
+export type LoginUserType= {
+    "loginOrEmail": string,
+    "password": string,
+
+}
+
 export type UserMongoDbType =  {
     userName: string,
     email: string,

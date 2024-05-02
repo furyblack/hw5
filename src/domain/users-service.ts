@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import {UserOutputType, UserViewType} from "../types/users/outputUserType";
+import {UserOutputType} from "../types/users/outputUserType";
 import {UsersRepository} from "../repositories/users-repository";
 import {UserMongoDbType} from "../types/users/inputUsersType";
 

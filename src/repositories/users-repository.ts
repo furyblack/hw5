@@ -3,12 +3,6 @@ import {UserMongoDbType} from "../types/users/inputUsersType";
 import {ObjectId, WithId} from "mongodb";
 
 export class UsersRepository{
-    static async getAllUsers():Promise<UserMongoDbType[]>{
-        return usersCollection
-            .find()
-            .sort('createdAt', -1)
-            .toArray()
-    }
 
     static async createUser(user: UserMongoDbType): Promise<ObjectId>{
 
@@ -16,18 +10,8 @@ export class UsersRepository{
         return result.insertedId
     }
 
-
-    static async findById(id:ObjectId):Promise<WithId<UserMongoDbType>| null>  {
-        let findedUser = await usersCollection.findOne({_id:id})
-        if (findedUser){
-            return findedUser
-        }else{
-            return null
-        }
-    }
-
-    static  async findByLoginOrEmail(loginOrEmail: string){
-        const user  = await usersCollection.findOne({$or: [{email: loginOrEmail}, {userName:loginOrEmail}]})
+    static  async findByLoginOrEmail(loginOrEmail: string):Promise<WithId<UserMongoDbType> |null>{
+        const user:WithId<UserMongoDbType>|null = await usersCollection.findOne({$or: [{email: loginOrEmail}, {userName:loginOrEmail}]})
         return user
     }
 
