@@ -1,7 +1,7 @@
 import { PaginationOutputType} from "../types/blogs/output";
 import { usersCollection} from "../db/db";
 import {SortDirection, WithId} from "mongodb";
-import {UserOutputType, userSortData, UserViewType} from "../types/users/outputUserType";
+import {UserOutputType, userSortData} from "../types/users/outputUserType";
 import {UserMongoDbType} from "../types/users/inputUsersType";
 
 

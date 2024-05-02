@@ -3,7 +3,7 @@ import {UserOutputType, UserViewType} from "../types/users/outputUserType";
 import {UsersRepository} from "../repositories/users-repository";
 import {UserMongoDbType} from "../types/users/inputUsersType";
 
-export const usersService = {
+export const UsersService = {
     async createUser(login: string, email:string, password:string): Promise<UserOutputType>{
         const passwordSalt = await bcrypt.genSalt(10)
         const passwordHash = await this._generateHash(password, passwordSalt)
@@ -30,12 +30,16 @@ export const usersService = {
         return hash
     },
     async checkCredentials(loginOrEmail: string, password: string){
-        const user = await UsersRepository.findByLoginOrEmail(loginOrEmail)
+        const user:UserMongoDbType | null = await UsersRepository.findByLoginOrEmail(loginOrEmail)
         if(!user) return false
         const passwordHash = await this._generateHash(password, user.passwordSalt)
         if(user.passwordHash !== passwordHash){
             return false
         }
         return true
+    },
+
+    async deleteUser(id: string):Promise<boolean>{
+        return await UsersRepository.deleteUser(id)
     }
 }
