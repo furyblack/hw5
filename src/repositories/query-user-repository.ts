@@ -17,7 +17,6 @@ export class UserMapper {
     }
 }
 
-
 export class UserQueryRepository {
     static async getAll(sortData: userSortData): Promise<PaginationOutputType<UserOutputType[]>> {
         let {pageSize, pageNumber, sortBy, sortDirection, searchLoginTerm, searchEmailTerm } = sortData

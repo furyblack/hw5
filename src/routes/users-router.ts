@@ -2,7 +2,7 @@ import {Router, Request, Response} from "express";
 import {UsersService} from "../domain/users-service";
 import {RequestWithBody, RequestWithQuery} from "../types/common";
 import {CreateNewUserType, userQuerySortData} from "../types/users/inputUsersType";
-import {UserOutputType, UserViewType} from "../types/users/outputUserType";
+import {UserOutputType} from "../types/users/outputUserType";
 import {PaginationOutputType} from "../types/blogs/output";
 import {paginator, userPaginator} from "../types/paginator/pagination";
 import {UserQueryRepository} from "../repositories/query-user-repository";
