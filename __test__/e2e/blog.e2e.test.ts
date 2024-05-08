@@ -31,6 +31,14 @@ describe('blogs', ()=>{
             expect(createResponse.body.description).toEqual(blogCreateData.description)
             expect(createResponse.body.websiteUrl).toEqual(blogCreateData.websiteUrl)
             expect(createResponse.body.id).toEqual(expect.any(String))
+        //Вариант от Ксюши попробовать)
+        // expect(createResponse.body).toEqual({
+        //     name: '',
+        //     description: '',
+        //
+        // })
+
+
             //записываем данные полученного блога
         blog = createResponse.body
     })
@@ -41,7 +49,7 @@ describe('blogs', ()=>{
             .auth("admin", "qwerty")
             .send(incorrectBlogData)
             .expect(400)
-        expect(createResponse.body.errorsMessages.length).toEqual(3)
+        expect(createResponse.body.errorsMessages.length).toBe(3)
         expect(createResponse.body.errorsMessages[0].field).toEqual('name')
         expect(createResponse.body.errorsMessages[1].field).toEqual('description')
         expect(createResponse.body.errorsMessages[2].field).toEqual('websiteUrl')
@@ -79,6 +87,9 @@ describe('blogs', ()=>{
             .send(blogUpdateData)
             .expect(204)
     })//TODO не хватает по свагеру
+
+    //get by id
+    //resBlog(updated) !== created
 
     it('shouldn"t update blog with correct input data and incorrect blogId', async ()=>{
         await request(app)
