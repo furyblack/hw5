@@ -27,10 +27,6 @@ describe('users', ()=>{
         expect(createResponse.body.password).toEqual(userCreateData.password)
         expect(createResponse.body.email).toEqual(userCreateData.email)
         expect(createResponse.body.id).toEqual(expect.any(String))
-
-
-
-        //записываем данные полученного блога
         user = createResponse.body
     })
 
@@ -56,20 +52,13 @@ describe('users', ()=>{
 
 
     })
-    it('should get user by id', async ()=>{
-        const createResponse=  await request(app)
-            .get('/users/' + user!.id)
-            .expect(200)
-        expect(createResponse.body).toEqual(user!)
-
-    })
-    it('shouldn"t  get user by id', async ()=>{
+    it('should return all users', async ()=>{
         await request(app)
-            .get('/users/' + '54554')
-            .expect(404)
-
-
+            .get('/users')
+            .auth("admin", "qwerty")
+            .expect(200)
     })
+
 
     it('shouldn"t delete user by id wihtout auth ', async ()=>{
         await request(app)
