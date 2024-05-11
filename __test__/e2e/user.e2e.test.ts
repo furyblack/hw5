@@ -81,11 +81,11 @@ describe('users', ()=>{
         let  user1
         let  user2
         let  user3
-        it('create 1 users', async ()=>{
+        it('create 1 user', async ()=>{
             const userCreateData = {
                 login: "useruser1",
                 password: "useruser1",
-                email: "lennuseruser15646@gmail.com"
+                email: "useruser1@gmail.com"
 
             }
 
@@ -95,29 +95,14 @@ describe('users', ()=>{
                 .send(userCreateData)
                 .expect(201)
             user1 = createResponse.body
+            expect(createResponse.body).toEqual(user1!)
 
         })
-        it('create 3 users', async ()=>{
-            const userCreateData = {
-                login: "useruser3",
-                password: "useruser3",
-                email: "lennuseruser15646_3@gmail.com"
-
-            }
-
-            const createResponse=  await request(app)
-                .post('/users')
-                .auth("admin", "qwerty")
-                .send(userCreateData)
-                .expect(201)
-            user1 = createResponse.body
-
-        })
-        it('create 2 users', async ()=>{
+        it('create 1 user', async ()=>{
             const userCreateData = {
                 login: "useruser2",
                 password: "useruser2",
-                email: "lennuseruser15646_2@gmail.com"
+                email: "useruser2@gmail.com"
 
             }
 
@@ -127,6 +112,24 @@ describe('users', ()=>{
                 .send(userCreateData)
                 .expect(201)
             user2 = createResponse.body
+            expect(createResponse.body).toEqual(user2!)
+
+        })
+        it('create 1 user', async ()=>{
+            const userCreateData = {
+                login: "useruser3",
+                password: "useruser3",
+                email: "useruser3@gmail.com"
+
+            }
+
+            const createResponse=  await request(app)
+                .post('/users')
+                .auth("admin", "qwerty")
+                .send(userCreateData)
+                .expect(201)
+            user3 = createResponse.body
+            expect(createResponse.body).toEqual(user3!)
 
         })
     })
